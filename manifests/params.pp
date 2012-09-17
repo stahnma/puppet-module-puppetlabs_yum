@@ -16,7 +16,7 @@ class puppetlabs_yum::params {
        $urlbit = "fedora/f${::os_maj_version}"
     } else {
        $ostype = 'EL'
-       $urlbit = "${urlbit}"
+       $urlbit = "el/${::os_maj_version}"
     }
   }
 }
