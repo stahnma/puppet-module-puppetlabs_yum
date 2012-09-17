@@ -1,0 +1,8 @@
+name    'stahnma-puppetlabs_yum'
+version '0.0.1'
+source 'http://github.com/stahnma/puppet-module-puppetlabs_yum'
+author 'stahnma'
+license 'Apache License, Version 2.0'
+summary 'Setup the Puppet Labs Yum package repo'
+description 'Setup the Puppet Labs Yum  package repo on EL/Fedora '
+project_page 'http://github.com/stahnma/puppet-module-puppetlabs_yum'

@@ -1,0 +1,36 @@
+# Class puppetlabs
+#
+# Actions:
+#   Configure the proper repositories and import GPG keys
+#
+# Reqiures:
+#   You should probably be on an Enterprise Linux variant. (Centos, RH${ostype},
+#     Scientific, Oracle, Ascendos, et al)
+#
+# Sample Usage:
+#  include puppetlabs
+#
+class puppetlabs_yum inherits puppetlabs_yum::params {
+
+  if $::osfamily == 'RedHat' {
+    include puppetlabs_yum::products
+    include puppetlabs_yum::deps
+    include puppetlabs_yum::devel
+
+    puppetlabs_yum::rpm_gpg_key{ 'RPM-GPG-KEY-puppetlabs':
+      path => '/etc/pki/rpm-gpg/RPM-GPG-KEY-puppetlabs',
+    }
+
+    file { '/etc/pki/rpm-gpg/RPM-GPG-KEY-puppetlabs':
+      ensure => present,
+      owner  => 0,
+      group  => 0,
+      mode   => '0644',
+      source => 'puppet:///modules/puppetlabs_yum/RPM-GPG-KEY-puppetlabs',
+    }
+
+  } else {
+      notice ("Your operating system ${::operatingsystem} will not have Puppet Labs Yum repository configured")
+  }
+
+}
