@@ -10,12 +10,16 @@
 # Sample Usage:
 #  include puppetlabs
 #
-class puppetlabs_yum inherits puppetlabs_yum::params {
+class puppetlabs_yum (
+  $enable_devel = false
+) inherits puppetlabs_yum::params {
 
   if $::osfamily == 'RedHat' {
     include puppetlabs_yum::products
     include puppetlabs_yum::deps
-    include puppetlabs_yum::devel
+    class { "puppetlabs_yum::devel":
+      enable_devel   => $enable_devel,
+    }
 
     puppetlabs_yum::rpm_gpg_key{ 'RPM-GPG-KEY-puppetlabs':
       path => '/etc/pki/rpm-gpg/RPM-GPG-KEY-puppetlabs',
