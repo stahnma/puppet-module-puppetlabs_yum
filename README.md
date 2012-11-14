@@ -15,6 +15,11 @@ Other repositories that will setup but disabled (as per the puppetlabs-release s
    * puppetlabs-devel (pre-release software)
    * puppetlabs-source (source packages)
 
+## New in 0.1.0
+
+Devel can now be enabled through a class parameter through.
+  enable_devel = true
+
 # Proxy
 If you have an http proxy required to access the internet, you can use the
 $proxy variable in the params.pp file. If it is set to a value other than
