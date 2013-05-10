@@ -17,7 +17,7 @@ class puppetlabs_yum (
   if $::osfamily == 'RedHat' {
     include puppetlabs_yum::products
     include puppetlabs_yum::deps
-    class { "puppetlabs_yum::devel":
+    class { 'puppetlabs_yum::devel':
       enable_devel   => $enable_devel,
     }
 
