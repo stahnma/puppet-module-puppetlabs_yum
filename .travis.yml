@@ -1,6 +1,7 @@
 ---
 language: ruby
-script:
+script: "bundle exec rake spec:all SPEC_OPTS='--format documentation'"
+after_success:
 - git clone -q git://github.com/puppetlabs/ghpublisher.git .forge-releng
 - .forge-releng/publish
 env:
