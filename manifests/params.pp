@@ -12,11 +12,11 @@ class puppetlabs_yum::params {
   # There are some URL manipulations that have to happen based on exact OS type
   if $::osfamily == 'RedHat' {
     if $::operatingsystem == 'Fedora' {
-       $ostype = 'Fedora'
-       $urlbit = "fedora/f${::os_maj_version}"
+      $ostype = 'Fedora'
+      $urlbit = "fedora/f${::os_maj_version}"
     } else {
-       $ostype = 'EL'
-       $urlbit = "el/${::os_maj_version}"
+      $ostype = 'EL'
+      $urlbit = "el/${::os_maj_version}"
     }
   }
 }
