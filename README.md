@@ -48,5 +48,10 @@ family and version of operating system.
   * I assume it will work on any RHEL or Fedora variant
   * Also, I think this should work with earlier versions of Puppet (2.6.x at least)
 
+## Unit tests
+  
+    $ bundle install
+    $ bundle exec rake spec:all
+
 # License
 Apache Software License 2.0
