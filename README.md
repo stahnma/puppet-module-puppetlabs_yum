@@ -15,6 +15,15 @@ Other repositories that will setup but disabled (as per the puppetlabs-release s
    * puppetlabs-devel (pre-release software)
    * puppetlabs-source (source packages)
 
+## New in 0.1.2
+
+This module now noops if you have PE installed as not to put the system in a state of confusion.
+
+This commit creates a custom fact to determine if pe-puppet-enterprise-release
+is installed. If it is, we just noop the module. This allows for all systems to
+have this modules setup and classified while still retraining relatively sane
+and expected behavior.
+
 ## New in 0.1.0
 
 Devel can now be enabled through a class parameter through.
@@ -49,7 +58,7 @@ family and version of operating system.
   * Also, I think this should work with earlier versions of Puppet (2.6.x at least)
 
 ## Unit tests
-  
+
     $ bundle install
     $ bundle exec rake spec:all
 
