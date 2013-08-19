@@ -1,6 +1,8 @@
 # Devel repos.  This actually means rc previews, pre-release softare, etc
 class puppetlabs_yum::devel  (
-  $enable_devel = false
+  $enable_devel = false,
+  $url_prefix,
+  $url_prefixsrc,
 ) inherits puppetlabs_yum::params {
 
   if $enable_devel {
@@ -10,7 +12,7 @@ class puppetlabs_yum::devel  (
   }
 
   yumrepo { 'puppetlabs-devel':
-    baseurl  => "http://yum.puppetlabs.com/${params::urlbit}/devel/${::architecture}",
+    baseurl  => "${url_prefix}${params::urlbit}/devel/${::architecture}",
     descr    => "Puppet Labs Devel ${params::ostype} ${::os_maj_version} - ${::architecture}",
     enabled  => $enabled,
     gpgcheck => '1',
@@ -18,7 +20,7 @@ class puppetlabs_yum::devel  (
   }
 
   yumrepo { 'puppetlabs-devel-source':
-    baseurl  => "http://yum.puppetlabs.com/${params::urlbit}/devel/SRPMS",
+    baseurl  => "${url_prefix}${params::urlbit}/devel/SRPMS",
     descr    => "Puppet Labs Devel ${params::ostype} ${::os_maj_version} - ${::architecture} - Source",
     enabled  => $enabled,
     gpgcheck => '1',

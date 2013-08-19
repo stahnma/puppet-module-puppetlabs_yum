@@ -15,6 +15,11 @@ Other repositories that will setup but disabled (as per the puppetlabs-release s
    * puppetlabs-devel (pre-release software)
    * puppetlabs-source (source packages)
 
+## New in 0.1.4
+
+Sites that mirror PuppetLabs' YUM repo locally can now point at
+that cache.
+
 ## New in 0.1.2
 
 This module now noops if you have PE installed as not to put the system in a state of confusion.
