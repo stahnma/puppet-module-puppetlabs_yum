@@ -4,8 +4,6 @@ class puppetlabs_yum::products (
   $url_prefixsrc,
 ) inherits puppetlabs_yum::params {
 
-  #fail("YYYYYYY ${url_prefix}")
-
   yumrepo { 'puppetlabs-products':
     baseurl  => "${url_prefix}${params::urlbit}/products/${::architecture}",
     descr    => "Puppet Labs Products ${params::ostype} ${::os_maj_version} - ${::architecture}",
