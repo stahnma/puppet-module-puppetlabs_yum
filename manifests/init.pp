@@ -20,7 +20,7 @@ class puppetlabs_yum (
   $urlprefix_develsrc    = 'http://yum.puppetlabs.com/',
 ) inherits puppetlabs_yum::params {
 
-  if $::pper_installed == 'false' or $::pper_installed == undef {
+  if $::pper_installed == undef or not str2bool($::pper_installed) {
 
     if $::osfamily == 'RedHat' {
       class { 'puppetlabs_yum::products':
@@ -32,7 +32,7 @@ class puppetlabs_yum (
         url_prefixsrc => $urlprefix_depssrc,
       }
       class { 'puppetlabs_yum::devel':
-        enable_devel   => $enable_devel,
+        enable_devel  => $enable_devel,
         url_prefix    => $urlprefix_devel,
         url_prefixsrc => $urlprefix_develsrc,
       }
