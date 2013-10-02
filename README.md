@@ -17,8 +17,7 @@ Other repositories that will setup but disabled (as per the puppetlabs-release s
 
 ## New in 0.1.4
 
-Sites that mirror PuppetLabs' YUM repo locally can now point at
-that cache.
+Sites that mirror PuppetLabs YUM repo locally can now point at that cache.
 
 ## New in 0.1.2
 
