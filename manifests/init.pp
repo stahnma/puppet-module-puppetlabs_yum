@@ -14,7 +14,7 @@ class puppetlabs_yum (
   $enable_devel = false
 ) inherits puppetlabs_yum::params {
 
-  if $::pper_installed == true {
+  if $::pper_installed == 'false' {
 
     if $::osfamily == 'RedHat' {
       include puppetlabs_yum::products
