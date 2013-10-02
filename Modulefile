@@ -1,5 +1,5 @@
 name    'stahnma-puppetlabs_yum'
-version '0.1.3'
+version '0.1.4'
 source 'http://github.com/stahnma/puppet-module-puppetlabs_yum'
 author 'stahnma'
 license 'Apache License, Version 2.0'
