@@ -13,10 +13,10 @@ class puppetlabs_yum::params {
   if $::osfamily == 'RedHat' {
     if $::operatingsystem == 'Fedora' {
       $ostype = 'Fedora'
-      $urlbit = "fedora/f${::os_maj_version}"
+      $urlbit = 'fedora/f$releasever'
     } else {
       $ostype = 'EL'
-      $urlbit = "el/${::os_maj_version}"
+      $urlbit = 'el/$releasever'
     }
   }
 }
