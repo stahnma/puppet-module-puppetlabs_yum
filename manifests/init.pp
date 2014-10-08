@@ -8,7 +8,7 @@
 #     Scientific, Oracle, Ascendos, et al)
 #
 # Sample Usage:
-#  include puppetlabs
+#  include puppetlabs_yum
 #
 class puppetlabs_yum (
   $enable_devel = false
