@@ -1,17 +1,23 @@
-# Products include puppet, facter, mcollective, puppetdb, etc
-class puppetlabs_yum::products inherits puppetlabs_yum::params {
+# Private class
+class puppetlabs_yum::products {
+
+  if $puppetlabs_yum::enable_products {
+    $enabled = '1'
+  } else {
+    $enabled = '0'
+  }
 
   yumrepo { 'puppetlabs-products':
-    baseurl  => "http://yum.puppetlabs.com/${params::urlbit}/products/${::architecture}",
-    descr    => "Puppet Labs Products ${params::ostype} ${::os_maj_version} - ${::architecture}",
-    enabled  => '1',
+    baseurl  => $puppetlabs_yum::products_baseurl,
+    descr    => $puppetlabs_yum::products_descr,
+    enabled  => $enabled,
     gpgcheck => '1',
     gpgkey   => 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-puppetlabs',
   }
 
   yumrepo { 'puppetlabs-products-source':
-    baseurl        => "http://yum.puppetlabs.com/${params::urlbit}/products/SRPMS",
-    descr          => "Puppet Labs Products ${params::ostype} ${::os_maj_version} - ${::architecture} - Source",
+    baseurl        => $puppetlabs_yum::products_source_baseurl,
+    descr          => $puppetlabs_yum::products_source_descr,
     enabled        => '0',
     failovermethod => 'priority',
     gpgcheck       => '1',

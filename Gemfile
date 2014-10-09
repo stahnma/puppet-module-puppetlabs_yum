@@ -5,6 +5,7 @@ group :development, :test do
   gem 'rspec-puppet', :require => false
   gem 'puppetlabs_spec_helper', :require => false
   gem 'puppet-lint', :require => false
+  gem 'puppet-syntax', :require => false
 end
 
 puppetversion = ENV.key?('PUPPET_VERSION') ? "= #{ENV['PUPPET_VERSION']}" : ['>= 2.7']

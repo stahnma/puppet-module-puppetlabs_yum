@@ -1,18 +1,22 @@
-# Deps are things puppet labs product need to pull in for dependency
-#  resolution.  Ideally you won't need EPEL or somet other repository with Puppet
-#  Labs Product + Deps.
-class puppetlabs_yum::deps inherits puppetlabs_yum::params {
+# Private class
+class puppetlabs_yum::deps {
+
+  if $puppetlabs_yum::enable_deps {
+    $enabled = '1'
+  } else {
+    $enabled = '0'
+  }
 
   yumrepo { 'puppetlabs-deps':
-    baseurl  => "http://yum.puppetlabs.com/${params::urlbit}/dependencies/${::architecture}",
-    descr    => "Puppet Labs Dependencies ${params::ostype} ${::os_maj_version} - ${::architecture}",
-    enabled  => '1',
+    baseurl  => $puppetlabs_yum::deps_baseurl,
+    descr    => $puppetlabs_yum::deps_descr,
+    enabled  => $enabled,
     gpgcheck => '1',
     gpgkey   => 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-puppetlabs',
   }
   yumrepo { 'puppetlabs-deps-source':
-    baseurl  => "http://yum.puppetlabs.com/${params::urlbit}/dependencies/SRPMS",
-    descr    => "Puppet Labs Source Dependencies ${params::ostype} ${::os_maj_version} - ${::architecture} - Source",
+    baseurl  => $puppetlabs_yum::deps_source_baseurl,
+    descr    => $puppetlabs_yum::deps_source_descr,
     enabled  => '0',
     gpgcheck => '1',
     gpgkey   => 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-puppetlabs',

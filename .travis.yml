@@ -1,7 +1,7 @@
 ---
 language: ruby
 bundler_args: --without development
-script: "bundle exec rake spec:all SPEC_OPTS='--format documentation'"
+script: "bundle exec rake spec:all"
 after_success:
 - git clone -q git://github.com/puppetlabs/ghpublisher.git .forge-releng
 - .forge-releng/publish
@@ -10,16 +10,22 @@ env:
   - PUBLISHER_LOGIN=stahnma
   - secure: ! 'ayEUN2E/u9TYGFi4XSJ6gtOfBObj9tXlJLPN5glQac8aWmbbztTctRAK3uC5DUDR1EBfWn4vg/rv783Eqp7RkXbp0dnV/9M8B5ppvU21k/22H4FZFNdg0Z7cbklS3nZYpqk9Bm52sSMfSHay20R5ouzwUEGU5OcxAJN9pSrvfmI='
   matrix:
-    - PUPPET_GEM_VERSION="~> 2.6.0"
     - PUPPET_GEM_VERSION="~> 2.7.0"
     - PUPPET_GEM_VERSION="~> 3.0.0"
     - PUPPET_GEM_VERSION="~> 3.1.0"
+    - PUPPET_GEM_VERSION="~> 3.2.0"
+    - PUPPET_GEM_VERSION="~> 3.3.0"
+    - PUPPET_GEM_VERSION="~> 3.4.0"
+    - PUPPET_GEM_VERSION="~> 3.5.0"
+    - PUPPET_GEM_VERSION="~> 3.6.0"
+    - PUPPET_GEM_VERSION="~> 3.7.0"
 rvm:
   - 1.8.7
   - 1.9.3
   - 2.0.0
   - ruby-head
 matrix:
+  fast_finish: true
   allow_failures:
     - rvm: 2.0.0
     - rvm: ruby-head
@@ -30,11 +36,5 @@ matrix:
       env: PUPPET_GEM_VERSION="~> 2.7.0"
     - rvm: ruby-head
       env: PUPPET_GEM_VERSION="~> 2.7.0"
-    - rvm: 1.9.3
-      env: PUPPET_GEM_VERSION="~> 2.6.0"
-    - rvm: 2.0.0
-      env: PUPPET_GEM_VERSION="~> 2.6.0"
-    - rvm: ruby-head
-      env: PUPPET_GEM_VERSION="~> 2.6.0"
 notifications:
   email: false
