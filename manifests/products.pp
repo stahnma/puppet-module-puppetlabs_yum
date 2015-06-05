@@ -1,8 +1,11 @@
 # Products include puppet, facter, mcollective, puppetdb, etc
-class puppetlabs_yum::products inherits puppetlabs_yum::params {
+class puppetlabs_yum::products (
+  $url_prefix,
+  $url_prefixsrc,
+) inherits puppetlabs_yum::params {
 
   yumrepo { 'puppetlabs-products':
-    baseurl  => "http://yum.puppetlabs.com/${params::urlbit}/products/${::architecture}",
+    baseurl  => "${url_prefix}${params::urlbit}/products/${::architecture}",
     descr    => "Puppet Labs Products ${params::ostype} ${::os_maj_version} - ${::architecture}",
     enabled  => '1',
     gpgcheck => '1',
@@ -10,7 +13,7 @@ class puppetlabs_yum::products inherits puppetlabs_yum::params {
   }
 
   yumrepo { 'puppetlabs-products-source':
-    baseurl        => "http://yum.puppetlabs.com/${params::urlbit}/products/SRPMS",
+    baseurl        => "${url_prefixsrc}${params::urlbit}/products/SRPMS",
     descr          => "Puppet Labs Products ${params::ostype} ${::os_maj_version} - ${::architecture} - Source",
     enabled        => '0',
     failovermethod => 'priority',
